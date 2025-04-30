@@ -1,0 +1,23 @@
+#active-tags {
+  gap: 60px;
+  padding: 21px 0 0 104px;
+
+  .badge {
+    gap: 60px;
+    height: 53px;
+    color: black;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 17px 18px;
+    text-transform: capitalize;
+  }
+}
+
+button.btn-close {
+  color: $dark;
+  opacity: 1;
+
+  &:hover {
+    opacity: 1;
+  }
+}

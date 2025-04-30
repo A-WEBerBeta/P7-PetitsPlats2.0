@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Les Petits Plats</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container-fluid h-100">
+        <div class="row position-absolute">
+          <div class="col">
+            <img
+              src="./assets/LogoPetitsPlats.png"
+              alt="Logo Les Petits Plats"
+            />
+          </div>
+        </div>
+        <div
+          class="row h-100 d-flex flex-column justify-content-center align-items-center"
+        >
+          <div class="col-7 text-primary text-center mt-5">
+            <h1>
+              Cherchez parmi plus de 1500 recettes <br />
+              du quotidien, simples et délicieuses
+            </h1>
+          </div>
+
+          <!-- Search bar -->
+          <div class="input-group mt-3 container">
+            <input
+              type="text"
+              class="form-control"
+              id="main-search"
+              placeholder="Rechercher une recette, un ingrédient, ... "
+              aria-label="Rechercher une recette, un ingrédient, ... "
+              aria-describedby="search-btn"
+            />
+            <button class="clear-search" id="clear-search" type="button">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <button
+              class="btn text-white search-btn"
+              type="button"
+              id="search-btn"
+            >
+              <i
+                class="fa-solid fa-magnifying-glass d-flex align-items-center justify-content-center"
+              ></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="bg-light">
+      <!-- Filtres avancés -->
+      <section
+        class="container-fluid dropdown-container d-flex bg-light position-relative"
+      >
+        <div class="dropdown">
+          <button
+            class="btn dropdown-toggle"
+            type="button"
+            aria-expanded="false"
+            id="ingredients-btn"
+          >
+            Ingrédients
+            <i class="fa-solid fa-chevron-down"></i>
+            <i class="fa-solid fa-chevron-up d-none"></i>
+          </button>
+          <ul class="dropdown-menu" id="ingredients-dropdown"></ul>
+        </div>
+        <div class="dropdown">
+          <button
+            class="btn dropdown-toggle"
+            type="button"
+            aria-expanded="false"
+            id="appliances-btn"
+          >
+            Appareils
+            <i class="fa-solid fa-chevron-down"></i>
+            <i class="fa-solid fa-chevron-up d-none"></i>
+          </button>
+          <ul class="dropdown-menu" id="appliances-dropdown"></ul>
+        </div>
+        <div class="dropdown">
+          <button
+            class="btn dropdown-toggle"
+            type="button"
+            aria-expanded="false"
+            id="ustensils-btn"
+          >
+            Ustensiles
+            <i class="fa-solid fa-chevron-down"></i>
+            <i class="fa-solid fa-chevron-up d-none"></i>
+          </button>
+          <ul class="dropdown-menu" id="ustensils-dropdown"></ul>
+        </div>
+
+        <span id="recipe-counter" class="recipe-counter">50 recettes</span>
+      </section>
+      <!-- Active tags -->
+      <div id="active-tags" class="d-flex flex-wrap bg-light"></div>
+      <!-- Recipes container -->
+      <section
+        id="recipe-container"
+        class="container-fluid d-flex flex-wrap gap-5 bg-light"
+      >
+        <!-- cards injectées ici par le JS -->
+      </section>
+    </main>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

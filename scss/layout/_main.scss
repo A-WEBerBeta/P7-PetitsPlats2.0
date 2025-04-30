@@ -1,0 +1,82 @@
+#recipe-container {
+  box-sizing: border-box;
+  padding: 43px 0 201px 102px;
+}
+
+.card {
+  width: 380px;
+  height: 731px;
+  border-radius: 21px;
+  border: none;
+}
+
+.card__img {
+  position: relative;
+}
+
+.card__img img {
+  height: 253px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 21px 21px 0 0;
+}
+
+.card__time {
+  position: absolute;
+  top: 21px;
+  right: 20px;
+  background-color: $primary;
+  border-radius: 14px;
+  padding: 5px 15px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.card__content {
+  padding: 32px 25px;
+}
+
+.card__title {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.card__recipe {
+  font-family: "Manrope";
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: $secondary;
+  margin-top: 29px;
+  margin-bottom: 15px;
+}
+
+.card__description {
+  font-size: 14px;
+  font-weight: 400;
+  color: $dark;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card__ingredients {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card__ingredient {
+  font-size: 14px;
+  font-weight: 500;
+  color: $dark;
+  margin-bottom: 21px;
+}
+
+.card__quantity {
+  font-size: 14px;
+  font-weight: 400;
+  color: $secondary;
+}

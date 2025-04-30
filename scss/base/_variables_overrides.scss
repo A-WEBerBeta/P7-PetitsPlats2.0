@@ -1,0 +1,13 @@
+// Personnalisation des couleurs Bootstrap
+$primary: #ffd15b;
+$secondary: #7a7a7a;
+$light: #e5e5e5;
+$dark: #1b1b1b;
+
+// Changer la palette de couleurs Bootstrap
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "light": $light,
+  "dark": $dark,
+);

@@ -1,0 +1,12 @@
+// Base
+@import "./base/variables_overrides";
+@import "./base/typography";
+
+// Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+// Layout
+@import "./layout/header";
+@import "./layout/main";
+@import "./layout/filters";
+@import "./layout/tags";

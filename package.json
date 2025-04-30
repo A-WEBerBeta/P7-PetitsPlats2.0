@@ -1,0 +1,14 @@
+{
+  "name": "p7-petitsplats2.0",
+  "version": "1.0.0",
+  "description": "Projet Les Petits Plats",
+  "main": "recipes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  }
+}

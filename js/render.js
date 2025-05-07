@@ -1,11 +1,12 @@
-export function displayRecipes(recipes) {
+export function displayRecipes(recipes, searchTerm = "") {
   const container = document.getElementById("recipe-container");
   container.innerHTML = "";
 
   if (recipes.length === 0) {
     container.innerHTML = `
       <div class="no-results">
-        <p>Aucune recette ne correspond à votre recherche.</p>
+        <p>Aucune recette ne contient « <strong>${searchTerm}</strong> ».<br />
+        Vous pouvez essayer des termes comme « tarte aux pommes », « poisson », etc.</p>
       </div>
     `;
     return;

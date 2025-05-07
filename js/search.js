@@ -9,13 +9,23 @@ export function setupSearch(recipes) {
   function applySearch() {
     const searchTerm = searchInput.value.trim().toLowerCase();
     const filtered = searchAndFilter(searchTerm);
-    displayRecipes(filtered);
+    displayRecipes(filtered, searchTerm);
     updateRecipeCount(filtered, recipes.length);
   }
 
-  // Affiche ou cache clearBtn
+  // Recherche automtique à partir de 3 caractères
   searchInput.addEventListener("input", () => {
+    const value = searchInput.value.trim().toLowerCase();
+
+    // Affiche ou cache clearBtn
     clearBtn.style.display = searchInput.value.length > 0 ? "block" : "none";
+
+    if (value.length >= 3) {
+      applySearch();
+    } else {
+      displayRecipes(recipes);
+      updateRecipeCount(recipes, recipes.length);
+    }
   });
 
   // Clic sur le bouton de recherche

@@ -1,3 +1,4 @@
+import { updateFilters } from "./filters.js";
 import { displayRecipes, updateRecipeCount } from "./render.js";
 import { searchAndFilter } from "./searchAndFilterEngine.js";
 
@@ -11,6 +12,7 @@ export function setupSearch(recipes) {
     const filtered = searchAndFilter(searchTerm);
     displayRecipes(filtered, searchTerm);
     updateRecipeCount(filtered, recipes.length);
+    updateFilters(filtered);
   }
 
   // Recherche automtique à partir de 3 caractères
@@ -25,6 +27,7 @@ export function setupSearch(recipes) {
     } else {
       displayRecipes(recipes);
       updateRecipeCount(recipes, recipes.length);
+      updateFilters(recipes);
     }
   });
 
@@ -43,5 +46,6 @@ export function setupSearch(recipes) {
     clearBtn.style.display = "none";
     displayRecipes(recipes);
     updateRecipeCount(recipes, recipes.length);
+    updateFilters(recipes);
   });
 }

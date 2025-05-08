@@ -1,4 +1,5 @@
 import recipes from "./data/recipes.js";
+import { updateFilters } from "./filters.js";
 import { displayRecipes, updateRecipeCount } from "./render.js";
 import { searchAndFilter } from "./searchAndFilterEngine.js";
 
@@ -18,6 +19,7 @@ function handleFilterClick(type, item, recipes) {
     const filtered = searchAndFilter(searchTerm);
     displayRecipes(filtered);
     updateRecipeCount(filtered, recipes.length);
+    updateFilters(filtered);
   }
 }
 
@@ -28,6 +30,7 @@ function removeFilter(type, item, recipes) {
   const filtered = searchAndFilter(searchTerm);
   displayRecipes(filtered);
   updateRecipeCount(filtered, recipes.length);
+  updateFilters(filtered);
 }
 
 function createTag(type, item) {

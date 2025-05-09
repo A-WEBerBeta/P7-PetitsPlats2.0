@@ -18,7 +18,7 @@ export function displayRecipes(recipes, searchTerm = "") {
 
     article.innerHTML = `
       <div class="card__img">
-        <img src="./assets/json-recipes/${recipe.image}" alt="${
+        <img src="../assets/json-recipes/${recipe.image}" alt="${
       recipe.name
     }" style="height: 253px; object-fit: cover; width: 100%;" />
         <span class="card__time">${recipe.time}min</span>

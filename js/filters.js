@@ -72,33 +72,6 @@ function searchDropdown(type, items, container) {
     });
   });
 
-  searchIcon.addEventListener("click", () => {
-    const value = input.value.toLowerCase();
-
-    // Supprimer les anciens <li>
-    while (container.children.length > 1) {
-      container.removeChild(container.lastChild);
-    }
-
-    const filteredItems = items.filter((item) =>
-      item.toLowerCase().includes(value)
-    );
-
-    filteredItems.sort().forEach((item) => {
-      const li = document.createElement("li");
-      li.textContent = item.charAt(0).toUpperCase() + item.slice(1);
-      li.className = "dropdown-item";
-      li.addEventListener("click", () => {
-        handleFilterClick(type, item, recipes);
-
-        // Fermer le dropdown après sélection
-        const dropdownMenu = document.getElementById(`${type}-dropdown`);
-        dropdownMenu.classList.remove("show");
-      });
-      container.appendChild(li);
-    });
-  });
-
   clearBtn.addEventListener("click", () => {
     input.value = "";
     clearBtn.style.display = "none";

@@ -11610,7 +11610,6 @@ header .input-group .form-control:focus {
   color: #1b1b1b;
   display: -webkit-box;
   -webkit-line-clamp: 4;
-  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

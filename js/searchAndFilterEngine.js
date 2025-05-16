@@ -1,20 +1,11 @@
 import recipes from "./data/recipes.js";
 import { activeFilters } from "./tags.js";
 
-export function searchAndFilter(searchTerm = "") {
-  const term = searchTerm.toLowerCase();
-
-  let filtered = recipes.filter((recipe) => {
-    const inTitle = recipe.name.toLowerCase().includes(term);
-    const inDescription = recipe.description.toLowerCase().includes(term);
-    const inIngredients = recipe.ingredients.some((ing) =>
-      ing.ingredient.toLowerCase().includes(term)
-    );
-    return inTitle || inDescription || inIngredients;
-  });
+export function filterByTags(baseRecipes = recipes) {
+  let filtered = baseRecipes;
+  const { ingredients, appliances, ustensils } = activeFilters;
 
   // Filtrage par tags
-  const { ingredients, appliances, ustensils } = activeFilters;
 
   if (ingredients.length > 0) {
     filtered = filtered.filter((recipe) => {
@@ -39,4 +30,19 @@ export function searchAndFilter(searchTerm = "") {
   }
 
   return filtered;
+}
+
+export function searchAndFilter(searchTerm = "", baseRecipes = recipes) {
+  const term = searchTerm.toLowerCase();
+
+  // Filtrage barre de recherche principale
+
+  return baseRecipes.filter((recipe) => {
+    const inTitle = recipe.name.toLowerCase().includes(term);
+    const inDescription = recipe.description.toLowerCase().includes(term);
+    const inIngredients = recipe.ingredients.some((ing) =>
+      ing.ingredient.toLowerCase().includes(term)
+    );
+    return inTitle || inDescription || inIngredients;
+  });
 }

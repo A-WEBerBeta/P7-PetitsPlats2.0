@@ -1,6 +1,6 @@
 import { updateFilters } from "./filters.js";
 import { displayRecipes, updateRecipeCount } from "./render.js";
-import { searchAndFilter } from "./searchAndFilterEngine.js";
+import { filterByTags, searchAndFilter } from "./searchAndFilterEngine.js";
 
 export function setupSearch(recipes) {
   const searchInput = document.getElementById("main-search");
@@ -9,43 +9,31 @@ export function setupSearch(recipes) {
 
   function applySearch() {
     const searchTerm = searchInput.value.trim().toLowerCase();
-    const filtered = searchAndFilter(searchTerm);
-    displayRecipes(filtered, searchTerm);
-    updateRecipeCount(filtered, recipes.length);
-    updateFilters(filtered);
+    const tagFiltered = filterByTags(recipes);
+    const finalFiltered =
+      searchTerm.length >= 3
+        ? searchAndFilter(searchTerm, tagFiltered)
+        : tagFiltered;
+
+    displayRecipes(finalFiltered, searchTerm);
+    updateRecipeCount(finalFiltered, recipes.length);
+    updateFilters(finalFiltered);
   }
 
   // Recherche automtique à partir de 3 caractères
   searchInput.addEventListener("input", () => {
-    const value = searchInput.value.trim().toLowerCase();
-
     // Affiche ou cache clearBtn
     clearBtn.style.display = searchInput.value.length > 0 ? "block" : "none";
-
-    if (value.length >= 3) {
-      applySearch();
-    } else {
-      displayRecipes(recipes);
-      updateRecipeCount(recipes, recipes.length);
-      updateFilters(recipes);
-    }
+    applySearch();
   });
 
   // Clic sur le bouton de recherche
-  searchBtn.addEventListener("click", () => {
-    if (searchInput.value.trim().length >= 3) {
-      applySearch();
-    } else {
-      displayRecipes(recipes);
-    }
-  });
+  searchBtn.addEventListener("click", applySearch);
 
   // Clic sur la croix pour effacer
   clearBtn.addEventListener("click", () => {
     searchInput.value = "";
     clearBtn.style.display = "none";
-    displayRecipes(recipes);
-    updateRecipeCount(recipes, recipes.length);
-    updateFilters(recipes);
+    applySearch();
   });
 }

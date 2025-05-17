@@ -1,11 +1,12 @@
-export function displayRecipes(recipes) {
+export function displayRecipes(recipes, searchTerm = "") {
   const container = document.getElementById("recipe-container");
   container.innerHTML = "";
 
   if (recipes.length === 0) {
     container.innerHTML = `
       <div class="no-results">
-        <p>Aucune recette ne correspond à votre recherche.</p>
+        <p>Aucune recette ne contient « <strong>${searchTerm}</strong> ».<br />
+        Vous pouvez essayer des termes comme « tarte aux pommes », « poisson », etc.</p>
       </div>
     `;
     return;
@@ -17,7 +18,7 @@ export function displayRecipes(recipes) {
 
     article.innerHTML = `
       <div class="card__img">
-        <img src="./assets/json-recipes/${recipe.image}" alt="${
+        <img src="./assets/json_recipes/${recipe.image}" alt="${
       recipe.name
     }" style="height: 253px; object-fit: cover; width: 100%;" />
         <span class="card__time">${recipe.time}min</span>

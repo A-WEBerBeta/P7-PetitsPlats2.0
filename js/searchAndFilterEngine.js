@@ -1,33 +1,10 @@
 import recipes from "./data/recipes.js";
 import { activeFilters } from "./tags.js";
 
-export function searchAndFilter(searchTerm = "") {
-  const term = searchTerm.toLowerCase();
-  const filtered = []; // tableau vide pour stocker les recettes filtrées
-
-  // Filtrage dans la barre de recherche principale
-  for (let i = 0; i < recipes.length; i++) {
-    const recipe = recipes[i];
-
-    let inTitle = recipe.name.toLowerCase().includes(term);
-    let inDescription = recipe.description.toLowerCase().includes(term);
-
-    if (inTitle || inDescription) {
-      filtered.push(recipe); // on ajoute la recette au tableau si correspondance
-      continue;
-    }
-
-    for (let j = 0; j < recipe.ingredients.length; j++) {
-      const ing = recipe.ingredients[j].ingredient.toLowerCase();
-      if (ing.includes(term)) {
-        filtered.push(recipe);
-        break;
-      }
-    }
-  }
-
+export function filterByTags(baseRecipes = recipes) {
   // filtrage par tags
   const { ingredients, appliances, ustensils } = activeFilters;
+  let filtered = baseRecipes;
 
   // Filtre : ingredients
   if (ingredients.length > 0) {
@@ -105,6 +82,34 @@ export function searchAndFilter(searchTerm = "") {
     filtered.length = 0;
     for (let i = 0; i < temporary.length; i++) {
       filtered.push(temporary[i]);
+    }
+  }
+
+  return filtered;
+}
+
+export function searchAndFilter(searchTerm = "", baseRecipes = recipes) {
+  const term = searchTerm.toLowerCase();
+  const filtered = [];
+
+  // Filtrage dans la barre de recherche principale
+  for (let i = 0; i < baseRecipes.length; i++) {
+    const recipe = baseRecipes[i];
+
+    let inTitle = recipe.name.toLowerCase().includes(term);
+    let inDescription = recipe.description.toLowerCase().includes(term);
+
+    if (inTitle || inDescription) {
+      filtered.push(recipe); // on ajoute la recette au tableau si correspondance
+      continue;
+    }
+
+    for (let j = 0; j < recipe.ingredients.length; j++) {
+      const ing = recipe.ingredients[j].ingredient.toLowerCase();
+      if (ing.includes(term)) {
+        filtered.push(recipe);
+        break;
+      }
     }
   }
 

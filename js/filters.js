@@ -47,29 +47,24 @@ function searchDropdown(type, items, container) {
   container.appendChild(wrapper);
 
   input.addEventListener("input", () => {
-    clearBtn.style.display = input.value.length > 0 ? "block" : "none";
-  });
-
-  searchIcon.addEventListener("click", () => {
     const value = input.value.toLowerCase();
+    clearBtn.style.display = input.value.length > 0 ? "block" : "none";
 
-    // Supprimer les anciens <li>
+    // Suppression des anciens <li>
     while (container.children.length > 1) {
       container.removeChild(container.lastChild);
     }
 
-    const filteredItems = items.filter((item) =>
-      item.toLowerCase().includes(value)
-    );
+    const filteredItems = items
+      .filter((item) => item.toLowerCase().includes(value))
+      .sort();
 
-    filteredItems.sort().forEach((item) => {
+    filteredItems.forEach((item) => {
       const li = document.createElement("li");
       li.textContent = item.charAt(0).toUpperCase() + item.slice(1);
       li.className = "dropdown-item";
       li.addEventListener("click", () => {
         handleFilterClick(type, item, recipes);
-
-        // Fermer le dropdown après sélection
         const dropdownMenu = document.getElementById(`${type}-dropdown`);
         dropdownMenu.classList.remove("show");
       });
